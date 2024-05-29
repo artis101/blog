@@ -1,0 +1,66 @@
+# Zola build directory
+public/
+
+# Sass/SCSS cache
+.sass-cache/
+
+# Zola cache directory
+.cache/
+
+# Log files
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Backup files
+*~
+*.bak
+*.swp
+*.swo
+*.swn
+
+# Node modules (if using Node.js for any reason, such as with asset pipelines)
+node_modules/
+
+# Ignore package-lock.json (npm specific)
+package-lock.json
+
+# Ignore yarn.lock (yarn specific)
+yarn.lock
+
+# Compiled output (e.g. if using Hugo pipes)
+resources/_gen/
+
+# Uncomment if you have cgo dependencies
+# /vendor/
+
+# Optional IDE-specific files
+
+# VS Code
+.vscode/
+
+# JetBrains IDEs (e.g. IntelliJ, PyCharm)
+.idea/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim temporary files
+*.swp
+*.swo
+*.swn
+
+# MacOS specific files
+._*
+.Spotlight-V100
+.Trashes
+*.DS_Store
+.DS_Store
+
