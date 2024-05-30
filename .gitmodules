@@ -1,6 +1,0 @@
-[submodule "themes/after-dark"]
-	path = themes/after-dark
-	url = https://github.com/getzola/after-dark.git
-[submodule "themes/after-gruv"]
-	path = themes/after-gruv
-	url = https://github.com/artis101/after-gruv
