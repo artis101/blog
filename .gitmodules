@@ -1,0 +1,3 @@
+[submodule "themes/after-gruv"]
+	path = themes/after-gruv
+	url = https://github.com/artis101/after-gruv.git
