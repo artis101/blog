@@ -1,0 +1,19 @@
+base_url = "https://artis101.github.io/after-dark/"
+compile_sass = true
+title = "after-gruv theme"
+description = "A retro gruvbox inspired theme for Zola"
+generate_feed = true
+
+taxonomies = [
+    {name = "categories", feed = true},
+    {name = "tags", feed = true},
+]
+
+[extra]
+author = "Artis"
+after_dark_menu = [
+    {url = "$BASE_URL", name = "Home"},
+    {url = "$BASE_URL/categories", name = "Categories"},
+    {url = "$BASE_URL/tags", name = "Tags"},
+]
+after_dark_title = "My gruvy blog"
