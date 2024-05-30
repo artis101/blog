@@ -11,7 +11,7 @@ build_search_index = true
 title = "Artis Avotins personal site"
 
 # Theme
-theme = "after-dark"
+theme = "after-gruv"
 
 taxonomies = [
     # You can enable/disable RSS
