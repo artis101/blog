@@ -1,3 +1,11 @@
++++
+title = "The Year of the Linux Desktop"
+date = 2024-06-10
+
+[taxonomies]
+categories = ["Technology", "Linux"]
++++
+
 # The Year of the Linux Desktop
 
 This is the year of the Linux Desktop. I know, I know, you've heard this before. But this time it's different. This time it's real. This time it's happening. But this is not just about Linux. This is my blog, and this post is going to be about me! And a bit about Linux.
