@@ -2,10 +2,23 @@
 
 import { LETTERS } from "./letters.js";
 
+/**
+ * @typedef {Object} Offset
+ * @property {number} x - The x coordinate offset
+ * @property {number} y - The y coordinate offset
+ */
+
+/**
+ * @typedef {Object.<string, Offset>} OriginOffsets
+ */
+
 class GOLCanvas {
+  /**
+   * @constructor
+   */
   constructor() {
     this.canvas = document.querySelector("#canvas");
-    this.ctx = this.canvas.getContext("2d");
+    this.ctx = this.canvas.getContext("2d", { willReadFrequently: true });
     this.dpr = window.devicePixelRatio || 1;
     this.rect = this.canvas.getBoundingClientRect();
     this.imageDataCache = null;
@@ -13,6 +26,7 @@ class GOLCanvas {
     this.gridState = {}; // Stores the state of the grid (1 for live, 0 for dead)
     this.intervalId = null; // For GOL animation interval
     this.cellSize = null; // Fixed cell size for the simulation
+    /** @type {OriginOffsets} */
     this.originOffsets = {}; // Offset for grid expansion
 
     this.initState();
@@ -46,6 +60,10 @@ class GOLCanvas {
     }
   }
 
+  /** Get the grid offset for the given grid ID
+   * @param {string} gridId - The ID of the grid
+   * @returns {Object} - The grid offset object
+   * */
   getGridOffsetForGridId(gridId) {
     if (!this.originOffsets[gridId]) {
       this.originOffsets[gridId] = { x: 0, y: 0 };
@@ -134,16 +152,16 @@ class GOLCanvas {
         }
         startX += LETTERS[letter][0].length + 1; // Move to the next letter position, with 1 column gap
       } else {
+        console.warn(`Character not found in font: ${letter}`);
         startX += 4; // Move 3+1 columns for unknown characters
       }
     }
   }
 
   startGOLSimulation() {
-    // Set an interval to update the grid state every 500 milliseconds
     this.intervalId = setInterval(() => {
-      this.expandGridIfNecessary();
       // this.markOffScreenCellsAsDead();
+      this.expandGridIfNecessary();
       this.computeNextState();
     }, 100);
   }
@@ -161,7 +179,7 @@ class GOLCanvas {
       expandLeft = false,
       expandRight = false;
     let gridState = this.gridState[gridId];
-    let originOffset = this.getGridOffsetForGridId(gridId);
+    let originOffset = { ...this.getGridOffsetForGridId(gridId) };
 
     for (let row = 0; row < gridState.length; row++) {
       if (gridState[row][0] === 1) expandLeft = true;
@@ -192,7 +210,7 @@ class GOLCanvas {
       }
     }
 
-    this.originOffsets[gridId] = { ...originOffset };
+    this.originOffsets[gridId] = originOffset;
 
     // Invalidate cache
     this.invalidateImageDataCache();
@@ -207,12 +225,12 @@ class GOLCanvas {
 
   computeNextState() {
     for (let gridId in this.gridState) {
-      this.computeNextStateForElement(gridId);
+      this.computeElementNextState(gridId);
     }
     this.invalidateImageDataCache();
   }
 
-  computeNextStateForElement(gridId) {
+  computeElementNextState(gridId) {
     const gridState = this.gridState[gridId];
     let nextState = gridState.map((row) => [...row]);
 
@@ -287,7 +305,6 @@ class GOLCanvas {
 
   clearCanvas() {
     this.ctx.clearRect(0, 0, this.rect.width, this.rect.height);
-    this.invalidateImageDataCache();
   }
 
   animateCanvas() {
@@ -310,15 +327,20 @@ class GOLCanvas {
   drawStoredGrid(drawCoordinateGrid = false) {
     const golHeaders = document.querySelectorAll(".gol-header");
 
+    const imageData = this.getCanvasImageData();
+    const data = imageData.data;
+
     for (let header of golHeaders) {
       const gridState = this.gridState[header.id];
-      this.drawGridForElement(header, drawCoordinateGrid, gridState);
+      // Get image data at the actual resolution
+      this.drawGridForElement(header, drawCoordinateGrid, gridState, data);
     }
 
+    this.ctx.putImageData(imageData, 0, 0);
     this.invalidateImageDataCache();
   }
 
-  drawGridForElement(targetEl, drawCoordinateGrid, gridState) {
+  drawGridForElement(targetEl, drawCoordinateGrid, gridState, data) {
     const targetRect = targetEl.getBoundingClientRect();
     const canvasRect = this.canvas.getBoundingClientRect();
 
@@ -330,10 +352,6 @@ class GOLCanvas {
     const gridWidth = gridState[0].length;
 
     let originOffset = this.getGridOffsetForGridId(targetEl.id);
-
-    // Get image data at the actual resolution
-    const imageData = this.getCanvasImageData();
-    const data = imageData.data;
 
     for (let row = 0; row < gridHeight; row++) {
       for (let col = 0; col < gridWidth; col++) {
@@ -382,14 +400,12 @@ class GOLCanvas {
     }
 
     this.originOffsets[targetEl.id] = { ...originOffset };
-
-    this.ctx.putImageData(imageData, 0, 0);
   }
 }
 
 let golCanvas;
 
-// Wait for all fonts to load before executing the main function
+// this trick visually relies on micro5 webfont
 document.fonts.ready.then(() => {
   golCanvas = new GOLCanvas();
 });
