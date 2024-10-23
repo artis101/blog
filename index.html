@@ -1,134 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-      <!-- Enable responsiveness on mobile devices-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    
-
-      <title>Artis Avotins personal site</title>
-
-      
-
-      
-          <link rel="stylesheet" href="https://artisavotins.com/site.css">
-      
-
-      
-      
-    </head>
-
-    <body class="hack dark main container">
-        
-            
-                
-                    <header>
-                        <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
-                        
-                            <a itemprop="url"
-                               class=""
-                               href="https://artisavotins.com">
-                                <span itemprop="name">Home</span></a>
-                        
-                            <a itemprop="url"
-                               class=""
-                               href="https://artisavotins.com/about-me">
-                                <span itemprop="name">About me</span></a>
-                        
-                        </nav>
-                    </header>
-                
-            
-
-            <main>
-                
-                
-		    
-                        
-    <article itemscope itemtype="http://schema.org/CreativeWork">
-        <header>
-            <h2 itemprop="name">
-                <a href="https://artisavotins.com/x-is-the-year-of-linux-desktop/">The Year of the Linux Desktop</a>
-            </h2>
-            <span class="muted">
-    <svg class="icon i-clock" viewBox="0 0 32 32"
-         width="16" height="16" fill="none" stroke="currentcolor"
-         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-        <circle cx="16" cy="16" r="14"/>
-        <path d="M16 8 L16 16 20 20"/>
-    </svg>
-    <span>10 minute read</span>
-    <svg class="icon i-edit" viewBox="0 0 32 32"
-         width="16" height="16" fill="none" stroke="currentcolor"
-         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
-    </svg>
-
-    Published: 2024-06-10
-</span>
-        </header>
-        
-            <div itemprop="summary">
-                <p>This is the year of the Linux Desktop. I know, I know, you've heard this before. But this time it's different. This time it's real. This time it's happening. But this is not just about Linux. This is my blog, and this post is going to be about me! And a bit about Linux on desktop over the past 20 years.</p>
-
-                <nav class="readmore"><a itemprop="url" href="https://artisavotins.com/x-is-the-year-of-linux-desktop/">Read More&nbsp;&raquo;</a></nav>
-            </div>
-        
-    </article>
-
-	            
-                
-		    
-                        
-    <article itemscope itemtype="http://schema.org/CreativeWork">
-        <header>
-            <h2 itemprop="name">
-                <a href="https://artisavotins.com/first/">First post best post</a>
-            </h2>
-            <span class="muted">
-    <svg class="icon i-clock" viewBox="0 0 32 32"
-         width="16" height="16" fill="none" stroke="currentcolor"
-         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-        <circle cx="16" cy="16" r="14"/>
-        <path d="M16 8 L16 16 20 20"/>
-    </svg>
-    <span>2 minute read</span>
-    <svg class="icon i-edit" viewBox="0 0 32 32"
-         width="16" height="16" fill="none" stroke="currentcolor"
-         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
-    </svg>
-
-    Published: 2024-05-28
-</span>
-        </header>
-        
-            <div itemprop="summary">
-                <p>Hello! This is my first blog post. I hope you enjoy it. </p>
-<p>However it's not entirely true. I have written many posts before. But this is the first one that I'm writing with the intent of writing and not caring if someone reads it or not. Writing is hard. Writing requires discipline, and I haven't been able to discipline myself to write over the past decade. I hope that will change with practice.</p>
-
-                <nav class="readmore"><a itemprop="url" href="https://artisavotins.com/first/">Read More&nbsp;&raquo;</a></nav>
-            </div>
-        
-    </article>
-
-	            
-                
-		    
-                
-
-                <nav>
-                  <p>
-                    
-                    <span>Page 1 of 1</span>
-                    
-                  </p>
-                </nav>
-            </main>
-        
-    </body>
-
+<!doctype html>
+<html>
+  <head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/static/normalize.css" />
+    <link rel="stylesheet" href="/static/sakura.css" media="screen" />
+    <link
+      rel="stylesheet"
+      href="/static/sakura-dark.css"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/style.css" media="screen" />
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <div id="container">
+      <h1 id="title" class="gol-header micro5">Hi I'm Artis</h1>
+      <p class="sublead">
+        Software engineer who loves to build.<br />
+        Backend, frontend and devops generalist.
+      </p>
+      <p class="sublead">Welcome to my website!</p>
+      <hr />
+      <h2 id="about_me_grid" class="gol-header micro5">About me</h2>
+      <p>
+        I'm a generalist with over 20 years of experience in the software
+        industry. I have worked for companies of all sizes, from small startups
+        to large corporations, and have been a founder as well.
+      </p>
+      <p>
+        My technology stack of choice is Python or JavaScript for the backend,
+        and React for the frontend. PostgreSQL is my preferred database. I have
+        experience with Django, Flask, Express, Next.js, and DRF for backend
+        development. For frontend, I work with React, Preact, or vanilla JS. I
+        prefer TypeScript for all my JavaScript projects.
+      </p>
+      <p>
+        I am proficient in Linux and comfortable with the command line. My daily
+        OS is either MacOS or Arch Linux. I prefer using Docker and Nix. I have
+        been hosting my own services on a $5 VPS for years.
+      </p>
+      <p>
+        Throughout my career I have worked as a contractor, an individual
+        contributor and have been an engineering manager as well.
+      </p>
+      <p>
+        That's my professional life summed up in five paragraphs. Feel free to
+        look arouind the site to learn more about me.
+      </p>
+      <hr />
+      <h3 id="work_with_me_grid" class="gol-header micro5">Work with me</h3>
+      <blockquote>
+        Got a cool idea? Need help with your project? Looking to launch an MVP?
+        I'm your guy. I'm available for contract work. Having spent two decades
+        tinkering with code, I know a thing or two about building software.
+        <br />
+        Interested? Drop me a line at
+        <a href="mailto:artis.avotins@gmail.com">artis.avotins@gmail.com</a>
+      </blockquote>
+      <hr />
+      <h3 class="gol-header micro5">Contacts</h3>
+      <ul>
+        <li>
+          <a href="https://x.com/artiscode">𝕏 <small>(Twitter)</small></a>
+        </li>
+        <li><a href="https://github.com/artis101">GitHub</a></li>
+        <li><a href="mailto:artis.avotins@gmail.com">Email</a></li>
+      </ul>
+    </div>
+    <script type="module" src="/static/script.js"></script>
+  </body>
 </html>
