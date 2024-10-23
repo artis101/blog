@@ -15,11 +15,14 @@ class GOLCanvas {
     this.cellSize = null; // Fixed cell size for the simulation
     this.originOffsets = {}; // Offset for grid expansion
 
-    this.initCanvas();
+    this.initState();
     this.addEventListeners();
   }
 
-  initCanvas() {
+  initState() {
+    document.querySelectorAll(".gol-header").forEach((header) => {
+      header.style.visibility = "visible";
+    });
     this.rect = this.canvas.getBoundingClientRect();
 
     // Set the canvas size in pixels
@@ -65,6 +68,8 @@ class GOLCanvas {
   }
 
   initializeGridState() {
+    this.gridState = {};
+    this.originOffsets = {};
     const golHeaders = document.querySelectorAll(".gol-header");
 
     for (let header of golHeaders) {
@@ -101,7 +106,6 @@ class GOLCanvas {
     );
 
     this.gridState[targetEl.id] = gridState;
-    console.log(`Initialized grid state ${word} for ${targetEl.id}`);
     // Add the letters to the grid state
     this.addLettersToGridState(word, gridState);
 
@@ -393,6 +397,6 @@ document.fonts.ready.then(() => {
 // Handle resize events on the window
 window.addEventListener("resize", () => {
   if (golCanvas) {
-    golCanvas.initCanvas();
+    golCanvas.initState();
   }
 });
